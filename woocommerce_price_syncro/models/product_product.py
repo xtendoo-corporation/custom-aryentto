@@ -17,7 +17,7 @@ class ProductProduct(models.Model):
             if list_price:
                 product.write({
                     'list_price': list_price.fixed_price,
-                    'barcode': list_price.default_code,
+                    'barcode': product.default_code,
                 })
 
 # 5q8a-4saf-aqac
