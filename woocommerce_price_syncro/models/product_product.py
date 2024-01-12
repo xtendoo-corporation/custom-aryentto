@@ -11,13 +11,13 @@ class ProductProduct(models.Model):
             list_price = self.env['product.pricelist.item'].search(
                 [('product_id', '=', product.id),
                  ('applied_on', '=', '0_product_variant'),
-                 ('compute_price', '=', 'fixed')],
-                limit=1,
+                 ('compute_price', '=', 'fixed'),
+                 ('fixed_price', '>', 0)],
             )
             if list_price:
+                fixed_price = list_price.sorted(key=lambda r: r.fixed_price)[0]
                 product.write({
-                    'list_price': list_price.fixed_price,
+                    'list_price': fixed_price,
                     'barcode': product.default_code,
                 })
 
-# 5q8a-4saf-aqac
