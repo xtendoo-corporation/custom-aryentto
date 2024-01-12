@@ -8,16 +8,16 @@ class ProductProduct(models.Model):
 
     def action_woocommerce_price_syncro(self):
         for product in self:
-            list_price = self.env['product.pricelist.item'].search(
+            list_prices = self.env['product.pricelist.item'].search(
                 [('product_id', '=', product.id),
                  ('applied_on', '=', '0_product_variant'),
                  ('compute_price', '=', 'fixed'),
                  ('fixed_price', '>', 0)],
             )
-            if list_price:
-                fixed_price = list_price.sorted(key=lambda r: r.fixed_price)[0]
+            if list_prices:
+                list_price = list_prices.sorted(key=lambda r: r.fixed_price)[0]
                 product.write({
-                    'list_price': fixed_price,
+                    'list_price': list_price.fixed_price,
                     'barcode': product.default_code,
                 })
 
