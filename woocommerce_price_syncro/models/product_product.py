@@ -8,7 +8,7 @@ class ProductProduct(models.Model):
 
     reduced_price = fields.Float(
         string='Reduced Price',
-        default=1.0,
+        default=0.0,
         digits='Product Price',
         groups="base.group_user",
         help="The price at which the product is sold on the sales channels.",
