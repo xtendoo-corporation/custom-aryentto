@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
+    <record model="ir.ui.view" id="product_product_website_tree_view">
+        <field name="name">product.product.website.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="lst_price" position="after">
+                <field name="reduced_price" optional="show" string="Reduced Price"/>
+            </field>
+        </field>
+    </record>
+
     <record id="product_form_view_reduced_price" model="ir.ui.view">
         <field name="name">product.product.reduced.price</field>
         <field name="model">product.product</field>
