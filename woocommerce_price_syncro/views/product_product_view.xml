@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <odoo>
+    <record id="product_form_view_reduced_price" model="ir.ui.view">
+        <field name="name">product.product.reduced.price</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <div name="pricing" position="after">
+                <label for="reduced_price" string="Reduced Price"/>
+                <div class="o_row">
+                    <field name="reduced_price" class="oe_inline" widget='monetary'
+                           options="{'currency_field': 'currency_id', 'field_digits': True}"
+                           attrs="{'readonly': [('product_variant_count', '&gt;', 1)]}"/>
+                </div>
+            </div>
+        </field>
+    </record>
+
     <record id="action_woocommerce_price_syncro" model="ir.actions.server">
         <field name="name">Sincronizar precios</field>
         <field name="model_id" ref="product.model_product_product"/>
