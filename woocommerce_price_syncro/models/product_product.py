@@ -26,7 +26,7 @@ class ProductProduct(models.Model):
 
         for product in self:
             if product.barcode != product.default_code:
-                product.default_code = product.barcode
+                product.barcode = product.default_code
 
             if pricelist_sale:
                 list_prices = self.env['product.pricelist.item'].search(
