@@ -12,8 +12,8 @@
                              height="50"/>
                     </div>
                 </div>
-                <div>
-                    <div class="text-center d-inline-block">
+                <div class="mt32">
+                    <div class="text-center">
                         <span t-field="o.program_id.company_id.partner_id"
                               t-options='{"widget": "contact", "fields": ["address", "email"], "no_marker": True}'/>
                     </div>
